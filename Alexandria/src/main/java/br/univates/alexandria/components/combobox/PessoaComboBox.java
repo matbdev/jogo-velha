@@ -1,5 +1,6 @@
 package br.univates.alexandria.components.combobox;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -104,5 +105,13 @@ public class PessoaComboBox extends JComboBox<Pessoa> implements IComboBox<Pesso
     @Override
     public int getTamanho() {
         return this.al.size();
+    }
+
+    /**
+     * {@inheritedDoc}
+     */
+    @Override
+    public void adicionarAcao(ActionListener listener){
+        addActionListener(listener);
     }
 }

@@ -1,7 +1,6 @@
 package br.univates.jogovelha.view.jogador;
 
 import br.univates.alexandria.components.JFrameUtilsAdapter;
-import javax.swing.JButton;
 
 /**
  * Tela responsável pelo cadastro de usuários

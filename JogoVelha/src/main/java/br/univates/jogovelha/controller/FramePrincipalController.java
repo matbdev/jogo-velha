@@ -15,7 +15,6 @@ import br.univates.jogovelha.view.FramePrincipal;
 import br.univates.jogovelha.view.historico.HistoricoPanel;
 import br.univates.jogovelha.view.PainelInicial;
 import br.univates.jogovelha.view.jogador.PainelCadastroUsuario;
-import br.univates.jogovelha.view.jogador.PainelEditarUsuario;
 import br.univates.jogovelha.view.jogador.PainelVisualizarUsuarios;
 import br.univates.jogovelha.view.partida.SelecaoJogadorPanel;
 import javax.swing.JPanel;
@@ -34,7 +33,6 @@ public class FramePrincipalController {
     
     // Controllers
     private HistoricoController historicoController;
-    private InicioController inicioController;
     private CadastroUsuarioController cadastroController;
     private SelecaoJogadoresController selecaoController;
     private VisualizarUsuariosController visualizarUsuariosController;
@@ -64,7 +62,7 @@ public class FramePrincipalController {
         
         // Painel principal
         inicialView.adicionarAcaoBotaoIniciar(e -> cardLayout.show(view.getPainelPrincipal(), "iniciar"));
-        inicialView.adicionarAcaoBotaoJogadores(e -> cardLayout.show(view.getPainelPrincipal(), "jogadores"));
+        inicialView.adicionarAcaoBotaoJogadores(e -> cardLayout.show(view.getPainelPrincipal(), "visualizar"));
         inicialView.adicionarAcaoBotaoHistorico(e -> cardLayout.show(view.getPainelPrincipal(), "historico"));
         inicialView.adicionarAcaoBotaoSair(e -> {
             Messages.infoMessage(inicialView, "Saindo da aplicação...");
@@ -74,6 +72,7 @@ public class FramePrincipalController {
         // Controllers
         this.cadastroController = new CadastroUsuarioController(jogadorDao, cadastroView, painelPrincipal);
         this.cadastroController.hideVoltarBotao();
+        this.historicoController = new HistoricoController(historicoView, partidaDao, jogadorDao);
         this.visualizarUsuariosController = new VisualizarUsuariosController(
                 jogadorDao, 
                 visualizarView, 
@@ -81,9 +80,8 @@ public class FramePrincipalController {
                 this.historicoController, 
                 this.cadastroController
         );
-        this.historicoController = new HistoricoController(historicoView, partidaDao, jogadorDao);
         this.selecaoController = new SelecaoJogadoresController(selecaoView, partidaDao, jogadorDao, painelPrincipal);
-        this.inicioController = new InicioController(
+        new InicioController(
                 inicialView, 
                 painelPrincipal, 
                 jogadorDao, 

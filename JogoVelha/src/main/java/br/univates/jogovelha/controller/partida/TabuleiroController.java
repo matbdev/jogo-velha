@@ -3,7 +3,6 @@ package br.univates.jogovelha.controller.partida;
 import br.univates.jogovelha.model.Jogador;
 import br.univates.jogovelha.model.JogoVelha;
 import br.univates.jogovelha.view.partida.JTabuleiro;
-import javax.swing.JPanel;
 
 /**
  * Controller destinado para o controle do tabuleiro (especificamente)
@@ -14,7 +13,6 @@ public class TabuleiroController {
     private final JTabuleiro view;
     private final Jogador jogadorX;
     private final Jogador jogadorO;
-    private final JPanel painelPrincipal;
 
     private final JogoController jogoController;
 
@@ -22,14 +20,12 @@ public class TabuleiroController {
     public TabuleiroController(
         JTabuleiro view, 
         Jogador jogadorX, 
-        Jogador jogadorO, 
-        JPanel painelPrincipal, 
+        Jogador jogadorO,
         JogoController jogoController
     ) {
         this.view = view;
         this.jogadorX = jogadorX;
         this.jogadorO = jogadorO;
-        this.painelPrincipal = painelPrincipal;
         this.jogoController = jogoController;
         
         this.jogoVelha = new JogoVelha();

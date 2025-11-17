@@ -1,6 +1,7 @@
 package br.univates.alexandria.components.combobox;
 
 import java.util.ArrayList;
+import java.awt.event.ActionListener;
 
 public interface IComboBox<T> {
     /**
@@ -38,4 +39,9 @@ public interface IComboBox<T> {
      * @return tamanho da lista
      */
     public int getTamanho();
+
+    /**
+     * Adiciona um action listener para o combobox
+     */
+    public void adicionarAcao(ActionListener listener);
 }
