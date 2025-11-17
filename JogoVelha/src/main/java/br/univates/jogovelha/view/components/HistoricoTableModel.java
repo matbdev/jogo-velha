@@ -14,26 +14,31 @@ public class HistoricoTableModel extends AbstractTableModel {
     private final List<Partida> partidaList;
     private final String[] colunas = {"Data", "Jogador X", "Jogador O", "Resultado"};
     
+    // Construtor
     public HistoricoTableModel(List<Partida> partidaList) {
         this.partidaList = partidaList;
         Collections.sort(partidaList);
     }
     
+    // Número de linhas
     @Override
     public int getRowCount() {
         return this.partidaList.size();
     }
     
+    // Número de colunas
     @Override
     public int getColumnCount() {
         return colunas.length;
     }
     
+    // Nome de uma coluna
     @Override
     public String getColumnName(int column) {
         return this.colunas[column];
     }
     
+    // Preenche tabela
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Partida partida = partidaList.get(rowIndex);

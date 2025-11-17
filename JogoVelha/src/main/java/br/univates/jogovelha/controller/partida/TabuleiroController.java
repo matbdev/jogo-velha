@@ -6,7 +6,7 @@ import br.univates.jogovelha.view.partida.JTabuleiro;
 import javax.swing.JPanel;
 
 /**
- * Controller destinado para o controle do tabuleiro
+ * Controller destinado para o controle do tabuleiro (especificamente)
  * @author mateus.brambilla
  */
 public class TabuleiroController {
@@ -15,9 +15,17 @@ public class TabuleiroController {
     private final Jogador jogadorX;
     private final Jogador jogadorO;
     private final JPanel painelPrincipal;
+
     private final JogoController jogoController;
 
-    public TabuleiroController(JTabuleiro view, Jogador jogadorX, Jogador jogadorO, JPanel painelPrincipal, JogoController jogoController) {
+    // Construtor
+    public TabuleiroController(
+        JTabuleiro view, 
+        Jogador jogadorX, 
+        Jogador jogadorO, 
+        JPanel painelPrincipal, 
+        JogoController jogoController
+    ) {
         this.view = view;
         this.jogadorX = jogadorX;
         this.jogadorO = jogadorO;
@@ -26,6 +34,7 @@ public class TabuleiroController {
         
         this.jogoVelha = new JogoVelha();
         
+        // Adiciona ação a todos os botões, passando as coordenadas
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 final int linha = i;
@@ -35,8 +44,12 @@ public class TabuleiroController {
         }
     }
     
+    /**
+     * Método chamado quando o jogo acaba
+     * Desabilita cliques no tabuleiro e exibe mensagem
+     * Chama o método do controller do jogo para notificar o resultado
+     */
     private void processarFimDeJogo(char resultado) {
-        // Desabilita a view
         this.view.desabilitarTabuleiro(); 
 
         // Define a mensagem
@@ -63,6 +76,10 @@ public class TabuleiroController {
         this.view.resetarTabuleiro(); 
     }
     
+    /**
+     * Ação do clique de cada botão
+     * Desenha no botão o jogador atual
+     */
     private void cliqueBotao(int linha, int col) {
         char simboloDoTurno = jogoVelha.getTurnoAtual();
         boolean jogadaValida = jogoVelha.fazerJogada(linha, col);

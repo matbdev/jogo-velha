@@ -23,6 +23,7 @@ public class HistoricoController {
     private JogadorCbController controllerCb;
     private JPanel painelPrincipal;
     
+    // Construtor para quando a view não partir da visualização de usuário
     public HistoricoController(HistoricoPanel view, IDaoPartida partidaDao, IDao<Jogador, String> jogadorDao){
         this.view = view;
         this.partidaDao = partidaDao;
@@ -32,6 +33,8 @@ public class HistoricoController {
         );
         
         this.view.hideVoltarBotao();
+
+        // Ação do combobox
         view.getJogadorCb().adicionarAcao(
             e -> {
                 carregarDados();
@@ -46,14 +49,7 @@ public class HistoricoController {
         );
     }
     
-    public void hideVoltarBotao() {
-        this.view.hideVoltarBotao();
-    }
-    
-    public void showVoltarBotao() {
-        this.view.showVoltarBotao();
-    }
-    
+    // Construtor para quando a view partir da visualização de usuário
     public HistoricoController(HistoricoPanel view, IDaoPartida partidaDao, JPanel painelPrincipal, Jogador jogadorVisualizacao){
         this.view = view;
         this.partidaDao = partidaDao;
@@ -63,6 +59,16 @@ public class HistoricoController {
         this.controllerCb.setJogadorSelecionado(jogadorVisualizacao);
         this.view.getJogadorCb().setEditable(false);
         this.view.adicionarAcaoBotaoVoltar(e -> voltar());
+    }
+    
+    /** Método para ocultar botão de voltar */
+    public void hideVoltarBotao() {
+        this.view.hideVoltarBotao();
+    }
+    
+    /** Método para exibir botão de voltar */
+    public void showVoltarBotao() {
+        this.view.showVoltarBotao();
     }
     
     /**

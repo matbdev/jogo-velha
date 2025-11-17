@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 /**
  * Controller do painel de visualização de usuários cadastrados
+ * Várias ações podem ser executadas a partir desta tela
  * @author mateus.brambilla
  */
 public class VisualizarUsuariosController {
@@ -27,6 +28,7 @@ public class VisualizarUsuariosController {
     private JogadorTableModel tableModel;
     private Jogador jogadorSelecionado;
     
+    // Construtor
     public VisualizarUsuariosController(
         IDao<Jogador, String> jogadorDao,
         PainelVisualizarUsuarios view, 
@@ -62,6 +64,7 @@ public class VisualizarUsuariosController {
     /**
      * Adiciona o listener que atualiza o 'jogadorSelecionado' sempre que 
      * uma linha da tabela é clicada.
+     * Realiza o permissionamento de clique nos botões
      */
     private void adicionarListenerTabela() {
         this.view.getTable().getSelectionModel().addListSelectionListener(e -> {
@@ -70,7 +73,6 @@ public class VisualizarUsuariosController {
                 
                 if (selectedRow != -1) {
                     this.jogadorSelecionado = this.tableModel.getJogadorAt(selectedRow);
-                    this.view.getCadastrarBotao().setEnabled(false);
                     this.view.getEditarBotao().setEnabled(true);
                     
                     int derrotas = this.jogadorSelecionado.getQtdeDerrotas();
@@ -87,7 +89,6 @@ public class VisualizarUsuariosController {
                     
                 } else {
                     this.jogadorSelecionado = null;
-                    this.view.getCadastrarBotao().setEnabled(true);
                     this.view.getEditarBotao().setEnabled(false);
                     this.view.getExcluirBotao().setEnabled(false);
                     this.view.getPartidasBotao().setEnabled(false);
@@ -107,7 +108,8 @@ public class VisualizarUsuariosController {
     
     /**
      * Ação do botão "Editar".
-     * Verifica se um jogador está selecionado e navega para a tela de edição.
+     * Navega para a tela de edição.
+     * Gerencia os paineis
      */
     private void irParaEdicao() {
         if (this.painelEditarAtual != null) {
@@ -130,7 +132,7 @@ public class VisualizarUsuariosController {
     
     /**
      * Ação do botão "Partidas".
-     * Verifica se um jogador está selecionado e navega para a tela de edição.
+     * Bavega para a tela de histórico de partidas.
      */
     private void irParaPartidas() {
         try {
@@ -167,6 +169,5 @@ public class VisualizarUsuariosController {
         } catch (RecordNotReady e) {
             this.view.exibirErro("Erro ao recarregar dados: " + e.getMessage());
         }
-
     }
 }

@@ -47,7 +47,7 @@ public class FramePrincipalController {
         this.jogadorDao = DAOFactory.getJogadorDao();
         this.partidaDao = DAOFactory.getPartidaDao();
         
-        // Panels
+        // Paineis
         JPanel painelPrincipal = view.getPainelPrincipal();
         PainelInicial inicialView = new PainelInicial();
         PainelCadastroUsuario cadastroView = new PainelCadastroUsuario();
@@ -55,7 +55,7 @@ public class FramePrincipalController {
         HistoricoPanel historicoView = new HistoricoPanel();
         SelecaoJogadorPanel selecaoView = new SelecaoJogadorPanel();
         
-        // Adicionando panels
+        // Adicionando paineis ao card layout
         painelPrincipal.add(inicialView, "inicial");
         painelPrincipal.add(cadastroView, "cadastro");
         painelPrincipal.add(visualizarView, "visualizar");
@@ -63,12 +63,11 @@ public class FramePrincipalController {
         painelPrincipal.add(selecaoView, "selecao");
         
         // Painel principal
-        PainelInicial painelHome = new PainelInicial();
-        painelHome.adicionarAcaoBotaoIniciar(e -> cardLayout.show(view.getPainelPrincipal(), "iniciar"));
-        painelHome.adicionarAcaoBotaoJogadores(e -> cardLayout.show(view.getPainelPrincipal(), "jogadores"));
-        painelHome.adicionarAcaoBotaoHistorico(e -> cardLayout.show(view.getPainelPrincipal(), "historico"));
-        painelHome.adicionarAcaoBotaoSair(e -> {
-            Messages.infoMessage(painelHome, "Saindo da aplicação...");
+        inicialView.adicionarAcaoBotaoIniciar(e -> cardLayout.show(view.getPainelPrincipal(), "iniciar"));
+        inicialView.adicionarAcaoBotaoJogadores(e -> cardLayout.show(view.getPainelPrincipal(), "jogadores"));
+        inicialView.adicionarAcaoBotaoHistorico(e -> cardLayout.show(view.getPainelPrincipal(), "historico"));
+        inicialView.adicionarAcaoBotaoSair(e -> {
+            Messages.infoMessage(inicialView, "Saindo da aplicação...");
             System.exit(0);
         });  
         
@@ -83,7 +82,6 @@ public class FramePrincipalController {
                 this.cadastroController
         );
         this.historicoController = new HistoricoController(historicoView, partidaDao, jogadorDao);
-        this.historicoController.hideVoltarBotao();
         this.selecaoController = new SelecaoJogadoresController(selecaoView, partidaDao, jogadorDao, painelPrincipal);
         this.inicioController = new InicioController(
                 inicialView, 

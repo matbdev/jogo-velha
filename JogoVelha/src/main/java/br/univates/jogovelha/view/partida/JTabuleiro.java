@@ -10,6 +10,7 @@ import javax.swing.border.Border;
 
 /**
  * Tabuleiro com 9 botões clicáveis
+ * Gerencia seu funcionamento
  * @author mateus.brambilla
  */
 public class JTabuleiro extends JFrameUtilsAdapter {
@@ -59,9 +60,9 @@ public class JTabuleiro extends JFrameUtilsAdapter {
     
     /**
      * Desenha o símbolo ('X' ou 'O') no painel especificado.
-     * @param linha A linha (0-2)
-     * @param col A coluna (0-2)
-     * @param simbolo O símbolo ('X' ou 'O')
+     * @param linha - linha do botão (0-2)
+     * @param col - coluna do botão (0-2)
+     * @param simbolo - 'X' ou 'O'
      */
     public void desenharSimbolo(int linha, int col, char simbolo) {
         if (linha >= 0 && linha < 3 && col >= 0 && col < 3) {

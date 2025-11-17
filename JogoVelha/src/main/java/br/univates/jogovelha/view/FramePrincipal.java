@@ -1,15 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.univates.jogovelha.view;
 
 import br.univates.alexandria.util.Messages;
 import javax.swing.JMenuItem;
 
 /**
- *
- * @author mateu
+ * Frame principal da aplicação, contendo o painel com o card layout e o menu
+ * @author mateus.brambilla
  */
 public class FramePrincipal extends javax.swing.JFrame {
     

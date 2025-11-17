@@ -4,7 +4,7 @@ import br.univates.alexandria.components.JFrameUtilsAdapter;
 import java.awt.event.ActionListener;
 
 /**
- * Painel principal da aplicação
+ * Painel inicial da aplicação, com botões de navegação
  * @author mateus.brambilla
  */
 public class PainelInicial extends JFrameUtilsAdapter {

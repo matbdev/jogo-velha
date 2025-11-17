@@ -19,6 +19,7 @@ public class CadastroUsuarioController {
     private final PainelCadastroUsuario view;
     private final JPanel painelPrincipal;
     
+    // Construtor
     public CadastroUsuarioController(IDao<Jogador, String> jogadorDao, PainelCadastroUsuario view, JPanel painelPrincipal){
         this.view = view;
         this.jogadorDao = jogadorDao;
@@ -28,10 +29,12 @@ public class CadastroUsuarioController {
         this.view.adicionarAcaoBotaoVoltar(e -> voltar());
     }
     
+    /** Método para ocultar botão de voltar */
     public void hideVoltarBotao() {
         this.view.hideVoltarBotao();
     }
     
+    /** Método para exibir botão de voltar */
     public void showVoltarBotao() {
         this.view.showVoltarBotao();
     }

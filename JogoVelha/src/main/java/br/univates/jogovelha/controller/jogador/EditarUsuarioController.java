@@ -19,6 +19,7 @@ public class EditarUsuarioController {
     private final JPanel painelPrincipal;
     private final VisualizarUsuariosController visController;
 
+    // Construtor
     public EditarUsuarioController(PainelEditarUsuario view, IDao<Jogador, String> jogadorDao, JPanel painelPrincipal, Jogador jogador, VisualizarUsuariosController visController) {
         this.view = view;
         this.jogadorDao = jogadorDao;

@@ -16,6 +16,7 @@ public class JogadorCbController {
     private final JogadorComboBox combobox;
     private final IDao<Jogador, String> jogadorDao;    
 
+    // Construtor
     public JogadorCbController(JogadorComboBox combobox, IDao<Jogador, String> jogadorDao) {
         this.combobox = combobox;
         this.jogadorDao = jogadorDao;

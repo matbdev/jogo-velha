@@ -40,8 +40,10 @@ public class PainelVisualizarUsuarios extends JFrameUtilsAdapter {
     
     /**
      * Exibe uma caixa de diálogo de confirmação.
-     * @param mensagem A pergunta a ser exibida.
-     * @return inteiro (JOptionPane.YES_OPTION ou JOptionPane.NO_OPTION)
+     * @param mensagem - pergunta a ser exibida.
+     * @return inteiro:
+     *      - JOptionPane.YES_OPTION
+     *      - JOptionPane.NO_OPTION
      */
     public int exibirConfirmacao(String mensagem) {
         return JOptionPane.showConfirmDialog(this, mensagem, "Confirmação", JOptionPane.YES_NO_OPTION);

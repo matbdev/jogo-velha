@@ -5,7 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
- * Painel que contém o tabuleiro
+ * Painel que contém o tabuleiro, nomes dos jogadores e placar
+ * É o container geral do jogo
  * @author mateus.brambilla
  */
 public class PainelTabuleiro extends JFrameUtilsAdapter {
@@ -45,7 +46,6 @@ public class PainelTabuleiro extends JFrameUtilsAdapter {
     public JLabel getPontuacaoJ2() {
         return pontuacaoJ2;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

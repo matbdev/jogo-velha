@@ -4,7 +4,6 @@ package br.univates.jogovelha.model;
  * Classe que gerencia o estado e as regras do Jogo da Velha.
  */
 public class JogoVelha {
-
     // Constantes
     public static final char JOGADOR_X = 'X';
     public static final char JOGADOR_O = 'O';
@@ -16,9 +15,7 @@ public class JogoVelha {
     private char turnoAtual;
     private boolean jogoAtivo;
 
-    /**
-     * Cria uma nova instância da lógica do jogo.
-     */
+    // Construtor
     public JogoVelha() {
         this.tabuleiro = new char[3][3];
         resetarJogo();
@@ -38,10 +35,9 @@ public class JogoVelha {
     }
 
     /**
-     * Tenta registrar uma jogada no tabuleiro.
-     *
-     * @param linha A linha (0-2)
-     * @param col A coluna (0-2)
+     * Tenta registrar uma jogada no tabuleiro
+     * @param linha - linha do botão (0-2)
+     * @param col - coluna do botão (0-2)
      * @return true se a jogada foi válida e registrada, false caso contrário.
      */
     public boolean fazerJogada(int linha, int col) {
@@ -71,7 +67,11 @@ public class JogoVelha {
 
     /**
      * Verifica o estado atual do jogo.
-     * @return 'X' (Vitória do X), 'O' (Vitória do O), 'E' (Empate), ou ' ' (Jogo em andamento).
+     * @return resultado da partida:
+     *      - 'X' (Vitória do X)
+     *      - 'O' (Vitória do O)
+     *      - 'E' (Empate)
+     *      - ' ' (Jogo em andamento).
      */
     public char verificarVencedor() {
         // Linhas

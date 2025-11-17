@@ -61,7 +61,5 @@ public class Jogador extends Pessoa {
 
     public void adicionarDerrota() {
         this.qtdeDerrotas++;
-    }
-    
-    
+    } 
 }

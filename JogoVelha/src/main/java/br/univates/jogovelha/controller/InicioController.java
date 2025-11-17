@@ -24,11 +24,12 @@ public class InicioController {
     // DAOs
     private final IDao<Jogador, String> jogadorDao;
     
-    // Controllers necessários para carregar dados antes de navegar
+    // Controllers
     private final HistoricoController historicoController;
     private final VisualizarUsuariosController visualizarController;
     private final SelecaoJogadoresController selecaoController;
 
+    // Construtor
     public InicioController(
             PainelInicial view, JPanel painelPrincipal, 
             IDao<Jogador, String> jogadorDao, 

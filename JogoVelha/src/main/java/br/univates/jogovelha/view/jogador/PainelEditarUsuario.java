@@ -39,6 +39,7 @@ public class PainelEditarUsuario extends JFrameUtilsAdapter {
         this.botao.addActionListener(listener);
     }
     
+    // Setter
     public void adicionarAcaoBotaoVoltar(java.awt.event.ActionListener listener) {
         this.botaoVoltar.addActionListener(listener);
     }

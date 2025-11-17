@@ -16,25 +16,29 @@ import javax.swing.JPanel;
 
 /**
  * Controller geral da tela de jogo.
- * Gerencia o PainelTabuleiro (placar, botões) e
- * DELEGA a lógica do grid 3x3 para o TabuleiroController.
+ * Gerencia o functionamento do jogo (placar, jogadores e salvamento do banco)
+ * A lógica do tabuleiro está em outro controller
  */
 public class JogoController {
-    
+    // Necessário
     private final PainelTabuleiro view;
     private final JPanel painelPrincipal;
     private final Jogador jogadorX;
     private final Jogador jogadorO;
     private final Calendar c = Calendar.getInstance();
     
+    // Controller
     private final TabuleiroController tabuleiroController; 
     
+    // DAOs
     private final IDaoPartida partidaDao;
     private final IDao<Jogador, String> jogadorDao;
     
+    // Pontuação em memória
     private int pontuacaoX = 0;
     private int pontuacaoO = 0;
 
+    // Controller
     public JogoController(
             PainelTabuleiro view, 
             IDaoPartida partidaDao,
@@ -50,6 +54,7 @@ public class JogoController {
         this.partidaDao = partidaDao;
         this.jogadorDao = jogadorDao;
 
+        // Tabuleiro presente na view
         JTabuleiro gridTabuleiro = view.getjTabuleiro1();
 
         this.tabuleiroController = new TabuleiroController(
@@ -66,6 +71,10 @@ public class JogoController {
         atualizarPlacar();
     }
     
+    /**
+     * Atualiza o placar, colocando o nome dos jogadores, o player que está jogando ('X' ou 'O')
+     * e o placar, com base nos atributos privados
+     */
     private void atualizarPlacar() {
         this.view.getJogador1().setText(jogadorX.getNome() + " (X)");
         this.view.getJogador2().setText(jogadorO.getNome() + " (O)");
@@ -74,6 +83,9 @@ public class JogoController {
     }
     
     /**
+     * Realiza o salvamento no banco de dados
+     * Atualiza os objetos dos jogadores e cria um registro de partida, tudo
+     * gerenciado por uma única transação
      * @param vencedor 'X', 'O', ou 'E' (Empate)
      */
     private void atualizarBanco(char vencedor) {
@@ -118,11 +130,17 @@ public class JogoController {
         }
     }
 
+    /**
+     * Ação do botão de voltar
+     */
     private void voltar() {
         ((CardLayout) painelPrincipal.getLayout()).show(painelPrincipal, "selecao");
         painelPrincipal.remove(this.view);
     }
     
+    /**
+     * Ação do botão de revanche
+     */
     private void revanche() {
         this.tabuleiroController.resetarParaRevanche();
         this.view.getBotaoRevanche().setEnabled(false);

@@ -8,13 +8,14 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
 /**
- *
- * @author mateu
+ * Modelo de combobox especializado em jogadores
+ * @author mateus.brambilla
  */
 public class JogadorComboBox extends JComboBox<Jogador> implements IComboBox<Jogador>{
     private ArrayList<Jogador> jogadorList;
     private final DefaultComboBoxModel<Jogador> model;
     
+    // Construtor
     public JogadorComboBox(){
         this.model = new DefaultComboBoxModel<>();
         this.jogadorList = new ArrayList<>();

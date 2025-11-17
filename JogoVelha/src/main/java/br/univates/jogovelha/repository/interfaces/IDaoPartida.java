@@ -29,7 +29,7 @@ public interface IDaoPartida {
      * @throws RecordNotFoundException - erro de chave não encontrada
      * @throws DataBaseException - erro de conexão
      */
-    public ArrayList<Partida> read(CPF cpf) throws RecordNotFoundException, DataBaseException;
+    public ArrayList<Partida> read(CPF cpf) throws DataBaseException;
     
     /**
      * Realiza a leitura de todas as partidas

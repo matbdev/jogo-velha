@@ -34,6 +34,7 @@ public class PainelCadastroUsuario extends JFrameUtilsAdapter {
         this.botao.addActionListener(listener);
     }
     
+    // Setters
     public void adicionarAcaoBotaoVoltar(java.awt.event.ActionListener listener) {
         this.botaoVoltar.addActionListener(listener);
     }

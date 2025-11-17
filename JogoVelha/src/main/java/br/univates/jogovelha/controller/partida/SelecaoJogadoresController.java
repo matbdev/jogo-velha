@@ -21,17 +21,29 @@ import javax.swing.JPanel;
 public class SelecaoJogadoresController {
     private final SelecaoJogadorPanel view;
     private final JPanel painelPrincipal;
+    private PainelTabuleiro painelTabuleiroAtual;
+
+    // Controllers (combobox)
     private final JogadorCbController controllerCb1;
     private final JogadorCbController controllerCb2;
+
+    // Dao
     private final IDao<Jogador, String> jogadorDao;
     private final IDaoPartida partidaDao;
-    private PainelTabuleiro painelTabuleiroAtual;
     
-    public SelecaoJogadoresController(SelecaoJogadorPanel view, IDaoPartida partidaDao, IDao<Jogador, String> jogadorDao, JPanel painelPrincipal) {
+    // Construtor
+    public SelecaoJogadoresController(
+        SelecaoJogadorPanel view, 
+        IDaoPartida partidaDao, 
+        IDao<Jogador, String> jogadorDao, 
+        JPanel painelPrincipal
+    ) {
         this.view = view;
         this.jogadorDao = jogadorDao;
         this.partidaDao = partidaDao;
         this.painelPrincipal = painelPrincipal;
+
+        // Controllers
         this.controllerCb1 = new JogadorCbController(
                 this.view.getJogadorComboBox1(),
                 jogadorDao
@@ -41,16 +53,25 @@ public class SelecaoJogadoresController {
                 jogadorDao
         );
         
+        // Ações dos combobox e botões
         view.getJogadorComboBox1().addActionListener(e -> definirSegundoJogador());
         view.getJogadorComboBox2().addActionListener(e -> permitirBotao());
         view.adicionarAcaoBotao(e -> iniciarPartida());
+        view.adicionarAcaoBotaoVoltar(e -> voltar());
     }
     
+    /**
+     * M~etodo que carrega os dados das duas combobox
+     */
     public void carregarDados() throws DataBaseException, RecordNotReady {
         this.controllerCb1.carregarDados();
         this.controllerCb2.carregarDados();
     }
     
+    /**
+     * Método que é chamado assim que a primeira combobox é clicada
+     * Ela filtra os jogadores, excluindo aquele que foi selecionado como primeiro jogador
+     */
     private void definirSegundoJogador() {
         Jogador jogador = this.controllerCb1.getJogadorSelecionado();
         
@@ -71,6 +92,10 @@ public class SelecaoJogadoresController {
         }
     }
     
+    /**
+     * Método que é chamado assim que a segunda combobox é clicada
+     * Ela permite ou não o clique no botão de início
+     */
     private void permitirBotao() {
         Jogador jogador = this.controllerCb2.getJogadorSelecionado();
 
@@ -81,6 +106,10 @@ public class SelecaoJogadoresController {
         }
     }
     
+    /**
+     * Ação do botão de iniciar
+     * Gerencia o painel de tabuleiro
+     */
     private void iniciarPartida() {
         List<Jogador> jogadores = sortearIcone();
         
@@ -105,6 +134,7 @@ public class SelecaoJogadoresController {
     
     /**
      * Retorna, em ordem, o jogador que jogará com 'X' e aquele que jogará com 'O'
+     * @return lista de jogadores
      */
     private List<Jogador> sortearIcone() {
         List<Jogador> jogadores = new ArrayList<>();
@@ -113,5 +143,12 @@ public class SelecaoJogadoresController {
         
         Collections.shuffle(jogadores);
         return jogadores;
+    }
+
+    /**
+     * Ação do botão "Voltar"
+     */
+    private void voltar() {
+        ((CardLayout) painelPrincipal.getLayout()).show(painelPrincipal, "inicial");
     }
 }

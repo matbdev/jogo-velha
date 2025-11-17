@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * Modelo de tabela para historico de partidas
+ * Modelo de tabela para mostrar jogadores
  * @author mateus.brambilla
  */
 public class JogadorTableModel extends AbstractTableModel {
@@ -14,26 +14,31 @@ public class JogadorTableModel extends AbstractTableModel {
     private final List<Jogador> jogadorList;
     private final String[] colunas = {"CPF", "Nome", "Endereço", "V", "E", "D", "Jogos"};
     
+    // Construtor
     public JogadorTableModel(List<Jogador> jogadorList) {
         this.jogadorList = jogadorList;
         Collections.sort(jogadorList);
     }
     
+    // Número de linhas
     @Override
     public int getRowCount() {
         return this.jogadorList.size();
     }
     
+    // Número de colunas
     @Override
     public int getColumnCount() {
         return colunas.length;
     }
     
+    // Nome de uma coluna
     @Override
     public String getColumnName(int column) {
         return this.colunas[column];
     }
     
+    // Preenche tabela
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Jogador jogador = jogadorList.get(rowIndex);

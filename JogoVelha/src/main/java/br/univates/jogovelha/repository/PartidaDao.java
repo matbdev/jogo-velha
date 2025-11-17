@@ -86,7 +86,7 @@ public class PartidaDao implements IDaoPartida {
      * {@inheritDoc}
      */
     @Override
-    public ArrayList<Partida> readAll() throws RecordNotFoundException, DataBaseException {
+    public ArrayList<Partida> readAll() throws DataBaseException {
         IDao<Jogador, String> jogadorDao = DAOFactory.getJogadorDao();
         DataBaseConnectionManager db = DAOFactory.getDataBaseConnectionManager();
 

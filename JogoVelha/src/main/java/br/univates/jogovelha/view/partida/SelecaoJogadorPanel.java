@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package br.univates.jogovelha.view.partida;
 
 import br.univates.alexandria.components.JFrameUtilsAdapter;
@@ -9,8 +5,8 @@ import br.univates.jogovelha.view.components.JogadorComboBox;
 import javax.swing.JButton;
 
 /**
- *
- * @author mateu
+ * Painel com uma seleção de jogadores cadastrados para iniciar a partida
+ * @author mateus.brambilla
  */
 public class SelecaoJogadorPanel extends JFrameUtilsAdapter {
 
@@ -22,6 +18,7 @@ public class SelecaoJogadorPanel extends JFrameUtilsAdapter {
         getBotao().setEnabled(false);
     }
 
+    // Getters
     public JogadorComboBox getJogadorComboBox1() {
         return jogadorComboBox1;
     }
@@ -40,6 +37,11 @@ public class SelecaoJogadorPanel extends JFrameUtilsAdapter {
     @Override
     public void adicionarAcaoBotao(java.awt.event.ActionListener listener) {
         this.botao.addActionListener(listener);
+    }
+
+    // Setter
+    public void adicionarAcaoBotaoVoltar(java.awt.event.ActionListener listener) {
+        this.jButton1.addActionListener(listener);
     }
 
     /**

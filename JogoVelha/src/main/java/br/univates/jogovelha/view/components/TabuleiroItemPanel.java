@@ -1,6 +1,7 @@
 package br.univates.jogovelha.view.components;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,22 +9,33 @@ import javax.swing.JButton;
 
 /**
  * Classe que representa cada item do tabuleiro
+ * Possui uma coordenada que o define
  */
 public class TabuleiroItemPanel extends JButton {
     private int linha;
     private int coluna;
     private char simbolo;
     
+    // Construtor
     public TabuleiroItemPanel(){
         setBackground(Color.WHITE);
         setBorder(null);
         setBackground(null);
         setFocusPainted(false);
         this.setEnabled(true);
+        this.setFont(new Font("SansSerif", Font.PLAIN, 18));
     }
     
+    // Define um símbolo na posição (coloca como texto)
     public void setSimbolo(char simbolo) {
         this.simbolo = simbolo;
+
+        switch(simbolo){
+            case 'X' -> {this.setForeground(Color.BLUE);}
+            case 'O' -> {this.setForeground(Color.RED);}
+            case ' ' -> {this.setForeground(Color.WHITE);}
+        }
+
         setText(String.valueOf(this.simbolo));
     }
 
@@ -42,7 +54,7 @@ public class TabuleiroItemPanel extends JButton {
         this.coluna = coluna;
     }
 
-    // Getter
+    // Getters
     public int getLinha() {
         return linha;
     }
