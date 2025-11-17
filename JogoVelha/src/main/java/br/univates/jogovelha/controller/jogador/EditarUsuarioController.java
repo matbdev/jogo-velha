@@ -47,6 +47,8 @@ public class EditarUsuarioController {
             Jogador jogador = new Jogador(this.jogador.getCPF(), nome, endereco);
             this.jogadorDao.update(jogador);
             
+            this.view.getJogadorText().setText(jogador.getCPF().getCpfFormatado() + " - " + jogador.getNome());
+            
             this.view.exibirSucesso("Jogador editado com sucesso!");
             
         } catch (RecordNotFoundException e) {

@@ -59,15 +59,9 @@ public class InicioController {
 
     /**
      * Navega para a tela de visualização de jogadores.
-     * Verifica se há jogadores antes de navegar.
      */
     private void navegarParaJogadores() {
         try {
-            if (jogadorDao.readAll().isEmpty()) {
-                view.exibirErro("Não há jogadores cadastrados para exibir.");
-                return;
-            }
-
             this.visualizarController.carregarDados();
             cardLayout.show(painelPrincipal, "visualizar");
 

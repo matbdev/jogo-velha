@@ -60,15 +60,6 @@ public class FramePrincipalController {
         painelPrincipal.add(historicoView, "historico");
         painelPrincipal.add(selecaoView, "selecao");
         
-        // Painel principal
-        inicialView.adicionarAcaoBotaoIniciar(e -> cardLayout.show(view.getPainelPrincipal(), "iniciar"));
-        inicialView.adicionarAcaoBotaoJogadores(e -> cardLayout.show(view.getPainelPrincipal(), "visualizar"));
-        inicialView.adicionarAcaoBotaoHistorico(e -> cardLayout.show(view.getPainelPrincipal(), "historico"));
-        inicialView.adicionarAcaoBotaoSair(e -> {
-            Messages.infoMessage(inicialView, "Saindo da aplicação...");
-            System.exit(0);
-        });  
-        
         // Controllers
         this.cadastroController = new CadastroUsuarioController(jogadorDao, cadastroView, painelPrincipal);
         this.cadastroController.hideVoltarBotao();
@@ -103,7 +94,6 @@ public class FramePrincipalController {
             try {
                 this.visualizarUsuariosController.carregarDados();
                 cardLayout.show(view.getPainelPrincipal(), "visualizar");
-                
             } catch (DataBaseException | RecordNotReady ex) {
                 view.exibirErro("Erro ao carregar dados: " + ex.getMessage());
             }
