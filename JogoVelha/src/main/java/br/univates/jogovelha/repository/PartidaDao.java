@@ -49,11 +49,50 @@ public class PartidaDao implements IDaoPartida {
         ArrayList<Partida> partidasList = new ArrayList<>();
 
         try (ResultSet rs = db.runPreparedQuerySQL(
-            "SELECT * FROM transacao WHERE cpf_jogador_x = ? OR cpf_jogador_o = ?;",
+            "SELECT * FROM partida WHERE cpf_jogador_x = ? OR cpf_jogador_o = ?;",
             cpfJogador.getCpf(),
             cpfJogador.getCpf()
         )) 
         {
+            if (rs.isBeforeFirst()) {
+                rs.next();
+
+                while (!rs.isAfterLast()) {
+                    Date d = rs.getTimestamp("data_jogo");
+                    String cpf_jogador_x = rs.getString("cpf_jogador_x");
+                    String cpf_jogador_o = rs.getString("cpf_jogador_o");
+                    char resultado = rs.getString("resultado").charAt(0);
+
+                    Jogador jogadorX = jogadorDao.read(cpf_jogador_x);
+                    Jogador jogadorO = jogadorDao.read(cpf_jogador_o);
+
+                    partidasList.add(new Partida(jogadorX, jogadorO, d, resultado));
+                    rs.next();
+                }
+            }
+
+            Collections.sort(partidasList);
+
+        } catch (SQLException e) {
+            throw new RecordNotFoundException();
+        } finally {
+            db.closeConnection();
+        }
+        
+        return partidasList;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ArrayList<Partida> readAll() throws RecordNotFoundException, DataBaseException {
+        IDao<Jogador, String> jogadorDao = DAOFactory.getJogadorDao();
+        DataBaseConnectionManager db = DAOFactory.getDataBaseConnectionManager();
+
+        ArrayList<Partida> partidasList = new ArrayList<>();
+
+        try (ResultSet rs = db.runQuerySQL("SELECT * FROM partida")) {
             if (rs.isBeforeFirst()) {
                 rs.next();
 

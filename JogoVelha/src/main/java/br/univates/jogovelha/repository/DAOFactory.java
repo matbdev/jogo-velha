@@ -5,6 +5,7 @@ import br.univates.alexandria.exceptions.DataBaseException;
 import br.univates.alexandria.interfaces.IDao;
 import br.univates.alexandria.repository.DataBaseConnectionManager;
 import br.univates.jogovelha.model.Jogador;
+import br.univates.jogovelha.repository.interfaces.IDaoPartida;
 
 /**
  * Fábrica para criar instâncias de DAOs.
@@ -18,6 +19,14 @@ public class DAOFactory {
      */
     public static IDao<Jogador, String> getJogadorDao() {
         return new JogadorDao();
+    }
+    
+    /**
+     * Cria e retorna uma instância de PartidaDAO.
+     * @return - instância de PartidaDAO
+     */
+    public static IDaoPartida getPartidaDao() {
+        return new PartidaDao();
     }
 
     /**
@@ -37,7 +46,7 @@ public class DAOFactory {
     private static DataBaseConnectionManager getSqliteConnection() throws DataBaseException {
         DataBaseConnectionManager dbcm = new DataBaseConnectionManager(
                 DataBaseConnectionManager.SQLITE,
-                "sistemabancario.db",
+                "jogovelha.db",
                 "",
                 "");
                 
@@ -60,13 +69,13 @@ public class DAOFactory {
             """
             CREATE TABLE IF NOT EXISTS partida (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                cpf_jogador_x TEXT PRIMARY KEY,
-                cpf_jogador_o TEXT PRIMARY KEY,
+                cpf_jogador_x TEXT NOT NULL,
+                cpf_jogador_o TEXT NOT NULL,
                 resultado TEXT CHECK (resultado IN ('X', 'O', 'E')),
                 data_jogo TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-                FOREIGN KEY (jogador_x_id) REFERENCES jogadores(id),
-                FOREIGN KEY (jogador_o_id) REFERENCES jogadores(id)
+                FOREIGN KEY (cpf_jogador_x) REFERENCES jogador(cpf_jogador),
+                FOREIGN KEY (cpf_jogador_o) REFERENCES jogador(cpf_jogador)
             );
             """
         );

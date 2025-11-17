@@ -1,15 +1,25 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package br.univates.jogovelha.view;
 
 import br.univates.alexandria.util.Messages;
+import javax.swing.JMenuItem;
 
 /**
- * Tela que agrega todas as telas fragmentadas anteriores
- * @author mateus.brambilla
+ *
+ * @author mateu
  */
 public class FramePrincipal extends javax.swing.JFrame {
     
-    public FramePrincipal() {        
-        initComponents();  
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FramePrincipal.class.getName());
+
+    /**
+     * Creates new form TelaPrincipal
+     */
+    public FramePrincipal() {
+        initComponents();
     }
     
     public void exibirErro(String mensagem) {
@@ -19,36 +29,34 @@ public class FramePrincipal extends javax.swing.JFrame {
     public void exibirSucesso(String mensagem) {
         Messages.sucessMessage(this, mensagem);
     }
-    
+
     // Getters
     public javax.swing.JPanel getPainelPrincipal() {
-        return this.painel;
+        return this.panel;
     }
 
-    // Getters para os Itens de Menu de Início
-    public javax.swing.JMenuItem getPaginaInicialMenuItem() {
-        return paginaInicialMenuItem;
+    public JMenuItem getCadastrarUserMenuItem() {
+        return cadastrarUserMenuItem;
     }
-    
-    public javax.swing.JMenuItem getSairMenuItem() {
+
+    public JMenuItem getIniciarJogoMenuItem() {
+        return iniciarJogoMenuItem;
+    }
+
+    public JMenuItem getPainelInicialMenuItem() {
+        return painelInicialMenuItem;
+    }
+
+    public JMenuItem getPartidasMenuItem() {
+        return partidasMenuItem;
+    }
+
+    public JMenuItem getSairMenuItem() {
         return sairMenuItem;
     }
 
-    // Getters para os Itens de Menu Jogador
-    public javax.swing.JMenuItem getCadastroJogadorMenuItem() {
-        return cadastroJogadorMenuItem;
-    }
-
-    public javax.swing.JMenuItem getVisualizarJogadorsMenuItem() {
-        return visualizarJogadoresMenuItem;
-    }
-
-    public javax.swing.JMenuItem getEditarJogadorMenuItem() {
-        return editarJogadorMenuItem;
-    }
-    
-    public javax.swing.JMenuItem getDeletarJogadorMenuItem() {
-        return deletarJogadorMenuItem;
+    public JMenuItem getVisualizarUserMenuItem() {
+        return visualizarUserMenuItem;
     }
 
     /**
@@ -60,53 +68,54 @@ public class FramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painel = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jogadorMenu = new javax.swing.JMenu();
-        cadastroJogadorMenuItem = new javax.swing.JMenuItem();
-        editarJogadorMenuItem = new javax.swing.JMenuItem();
-        deletarJogadorMenuItem = new javax.swing.JMenuItem();
-        visualizarJogadoresMenuItem = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        iniciarJogoMenuItem = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        painelInicialMenuItem = new javax.swing.JMenuItem();
+        sairMenuItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        cadastrarUserMenuItem = new javax.swing.JMenuItem();
+        visualizarUserMenuItem = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        partidasMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Jogo da Velha");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setTitle("#3emLinha - Jogo da Velha Java");
 
-        painel.setLayout(new java.awt.CardLayout());
+        panel.setLayout(new java.awt.CardLayout());
 
-        inicioMenu.setText("Início");
+        jMenu1.setText("Início");
 
-        inicioMenu.add(jSeparator1);
+        iniciarJogoMenuItem.setText("Iniciar Jogo");
+        jMenu1.add(iniciarJogoMenuItem);
+        jMenu1.add(jSeparator1);
 
-        paginaInicialMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        paginaInicialMenuItem.setText("Página Inicial");
-        inicioMenu.add(paginaInicialMenuItem);
+        painelInicialMenuItem.setText("Painel Inicial");
+        jMenu1.add(painelInicialMenuItem);
 
-        sairMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
         sairMenuItem.setText("Sair");
-        inicioMenu.add(sairMenuItem);
+        jMenu1.add(sairMenuItem);
 
-        jMenuBar1.add(inicioMenu);
+        jMenuBar1.add(jMenu1);
 
-        jogadorMenu.setText("Correntista");
+        jMenu2.setText("Jogador");
 
-        cadastroJogadorMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        cadastroJogadorMenuItem.setText("Cadastro");
-        jogadorMenu.add(cadastroJogadorMenuItem);
+        cadastrarUserMenuItem.setText("Cadastrar");
+        jMenu2.add(cadastrarUserMenuItem);
 
-        editarJogadorMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        editarJogadorMenuItem.setText("Editar");
-        jogadorMenu.add(editarJogadorMenuItem);
+        visualizarUserMenuItem.setText("Visualizar");
+        jMenu2.add(visualizarUserMenuItem);
 
-        deletarJogadorMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        deletarJogadorMenuItem.setText("Deletar");
-        jogadorMenu.add(deletarJogadorMenuItem);
+        jMenuBar1.add(jMenu2);
 
-        visualizarJogadoresMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        visualizarJogadoresMenuItem.setText("Visualizar");
-        jogadorMenu.add(visualizarJogadoresMenuItem);
+        jMenu3.setText("Histórico");
 
-        jMenuBar1.add(jogadorMenu);
+        partidasMenuItem.setText("Partidas");
+        jMenu3.add(partidasMenuItem);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -114,17 +123,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
         );
 
         pack();
@@ -139,25 +142,34 @@ public class FramePrincipal extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new FramePrincipal().setVisible(true);
-        });
+        java.awt.EventQueue.invokeLater(() -> new FramePrincipal().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu inicioMenu;
-    private javax.swing.JMenuItem cadastroJogadorMenuItem;
-    private javax.swing.JMenu jogadorMenu;
-    private javax.swing.JMenuItem deletarJogadorMenuItem;
-    private javax.swing.JMenuItem editarJogadorMenuItem;
+    private javax.swing.JMenuItem cadastrarUserMenuItem;
+    private javax.swing.JMenuItem iniciarJogoMenuItem;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JMenuItem paginaInicialMenuItem;
-    private javax.swing.JPanel painel;
+    private javax.swing.JMenuItem painelInicialMenuItem;
+    private javax.swing.JPanel panel;
+    private javax.swing.JMenuItem partidasMenuItem;
     private javax.swing.JMenuItem sairMenuItem;
-    private javax.swing.JMenuItem visualizarJogadoresMenuItem;
+    private javax.swing.JMenuItem visualizarUserMenuItem;
     // End of variables declaration//GEN-END:variables
 }

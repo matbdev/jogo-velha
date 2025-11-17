@@ -38,8 +38,8 @@ public class JogadorDao implements IDao<Jogador, String> {
                     jogador.getNome(), 
                     jogador.getEndereco(), 
                     jogador.getQtdeVitorias(),
-                    jogador.getQtdeDerrotas(), 
-                    jogador.getQtdeEmpates()
+                    jogador.getQtdeEmpates(),
+                    jogador.getQtdeDerrotas()
                 );
 
             } catch (DataBaseException e) {
@@ -72,7 +72,7 @@ public class JogadorDao implements IDao<Jogador, String> {
                         String cpf = rs.getString("cpf_jogador");
                         String nome = rs.getString("nome");
                         String endereco = rs.getString("endereco");
-                        int qtdeVitorias = rs.getInt("qtdeVitoria");
+                        int qtdeVitorias = rs.getInt("qtdeVitorias");
                         int qtdeEmpates = rs.getInt("qtdeEmpates");
                         int qtdeDerrotas = rs.getInt("qtdeDerrotas");
 
@@ -105,7 +105,7 @@ public class JogadorDao implements IDao<Jogador, String> {
         try {
             db = DAOFactory.getDataBaseConnectionManager();
 
-            db.runPreparedSQL("DELETE FROM correntista WHERE cpf_jogador = ?",
+            db.runPreparedSQL("DELETE FROM jogador WHERE cpf_jogador = ?",
                     jogador.getCPF().getCpf()
             );
 
@@ -137,7 +137,7 @@ public class JogadorDao implements IDao<Jogador, String> {
                 rs.next();
                 String nome = rs.getString("nome");
                 String endereco = rs.getString("endereco");
-                int qtdeVitorias = rs.getInt("qtdeVitoria");
+                int qtdeVitorias = rs.getInt("qtdeVitorias");
                 int qtdeEmpates = rs.getInt("qtdeEmpates");
                 int qtdeDerrotas = rs.getInt("qtdeDerrotas");
 
@@ -197,8 +197,7 @@ public class JogadorDao implements IDao<Jogador, String> {
 
     /**
      * {@inheritDoc}
-     * 
-     * Este método não gerencia a sua própria conexão
+     * * Este método não gerencia a sua própria conexão
      */
     @Override
     public void update(Jogador jogador, DataBaseConnectionManager db) throws RecordNotFoundException, DataBaseException {
@@ -207,7 +206,7 @@ public class JogadorDao implements IDao<Jogador, String> {
         }
             
         db.runPreparedSQL(
-            "UPDATE correntista SET nome = ?, endereco = ?, qtdeVitorias = ?, qtdeEmpates = ?, qtdeDerrotas = ? WHERE cpf_correntista = ?",
+            "UPDATE jogador SET nome = ?, endereco = ?, qtdeVitorias = ?, qtdeEmpates = ?, qtdeDerrotas = ? WHERE cpf_jogador = ?",
             jogador.getNome(), 
             jogador.getEndereco(),
             jogador.getQtdeVitorias(),

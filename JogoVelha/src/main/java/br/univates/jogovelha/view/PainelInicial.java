@@ -1,24 +1,55 @@
 package br.univates.jogovelha.view;
 
 import br.univates.alexandria.components.JFrameUtilsAdapter;
+import java.awt.event.ActionListener;
 
 /**
- * Painel para apresentação do aplicativo
+ * Painel principal da aplicação
  * @author mateus.brambilla
  */
 public class PainelInicial extends JFrameUtilsAdapter {
 
+    /**
+     * Creates new form PainelInicial
+     */
     public PainelInicial() {
         initComponents();
     }
     
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void adicionarAcaoBotao(java.awt.event.ActionListener listener) {
-        this.botao.addActionListener(listener);
+    // Getters
+    public javax.swing.JButton getBotaoIniciar() {
+        return this.botaoIniciar;
     }
+    
+    public javax.swing.JButton getBotaoJogadores() {
+        return this.botaoJogadores;
+    }
+    
+    public javax.swing.JButton getBotaoHistorico() {
+        return this.botaoHistorico;
+    }
+    
+    public javax.swing.JButton getBotaoSair() {
+        return this.botaoSair;
+    }
+    
+    // Setters
+    public void adicionarAcaoBotaoIniciar(ActionListener listener){
+        this.botaoIniciar.addActionListener(listener);
+    }
+    
+    public void adicionarAcaoBotaoJogadores(ActionListener listener){
+        this.botaoJogadores.addActionListener(listener);
+    }
+    
+    public void adicionarAcaoBotaoHistorico(ActionListener listener){
+        this.botaoHistorico.addActionListener(listener);
+    }
+    
+    public void adicionarAcaoBotaoSair(ActionListener listener){
+        this.botaoSair.addActionListener(listener);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,19 +60,29 @@ public class PainelInicial extends JFrameUtilsAdapter {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botao = new javax.swing.JButton();
-        subtitleLabel = new javax.swing.JLabel();
-        titleLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        botaoHistorico = new javax.swing.JButton();
+        botaoIniciar = new javax.swing.JButton();
+        botaoSair = new javax.swing.JButton();
+        botaoJogadores = new javax.swing.JButton();
 
-        botao.setText("Sair");
+        jLabel1.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Um jogo da velha em Java puro, utilizando a lib Swing");
 
-        subtitleLabel.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        subtitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtitleLabel.setText("Escolha uma opção nos menus acima!");
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setLabelFor(jLabel1);
+        jLabel2.setText("Bem vindo ao #3emLinha!");
 
-        titleLabel.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Bem Vindo ao Jogo da Velha!");
+        botaoHistorico.setText("Visualizar Histórico");
+
+        botaoIniciar.setText("Iniciar Partida");
+
+        botaoSair.setText("Sair");
+
+        botaoJogadores.setText("Gerenciar Jogadores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,29 +92,51 @@ public class PainelInicial extends JFrameUtilsAdapter {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botao)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(subtitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botaoIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoJogadores, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(botaoHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(110, 110, 110))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(titleLabel)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
+                .addComponent(botaoIniciar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subtitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(botao)
-                .addContainerGap())
+                .addComponent(botaoJogadores)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoHistorico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoSair)
+                .addContainerGap(44, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(74, 74, 74)
+                    .addComponent(jLabel2)
+                    .addContainerGap(197, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botao;
-    private javax.swing.JLabel subtitleLabel;
-    private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton botaoHistorico;
+    private javax.swing.JButton botaoIniciar;
+    private javax.swing.JButton botaoJogadores;
+    private javax.swing.JButton botaoSair;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

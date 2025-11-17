@@ -1,6 +1,8 @@
 package br.univates.jogovelha.view.jogador;
 
 import br.univates.alexandria.components.JFrameUtilsAdapter;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * Painel destinado à visualização de todos usuários cadastrados
@@ -10,11 +12,39 @@ public class PainelVisualizarUsuarios extends JFrameUtilsAdapter {
 
     public PainelVisualizarUsuarios() {
         initComponents();
+        getExcluirBotao().setEnabled(false);
+        getEditarBotao().setEnabled(false);
+        getPartidasBotao().setEnabled(false);
     }
     
-    // Getter
+    // Getters
     public javax.swing.JTable getTable() {
         return this.tableUsers;
+    }
+
+    public JButton getExcluirBotao() {
+        return excluirBotao;
+    }
+
+    public JButton getEditarBotao() {
+        return editarBotao;
+    }
+
+    public JButton getCadastrarBotao() {
+        return cadastrarBotao;
+    }
+
+    public JButton getPartidasBotao() {
+        return partidasBotao;
+    }
+    
+    /**
+     * Exibe uma caixa de diálogo de confirmação.
+     * @param mensagem A pergunta a ser exibida.
+     * @return inteiro (JOptionPane.YES_OPTION ou JOptionPane.NO_OPTION)
+     */
+    public int exibirConfirmacao(String mensagem) {
+        return JOptionPane.showConfirmDialog(this, mensagem, "Confirmação", JOptionPane.YES_NO_OPTION);
     }
 
     /**
@@ -29,12 +59,39 @@ public class PainelVisualizarUsuarios extends JFrameUtilsAdapter {
         labelTituloCadastroCorrentista = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
+        excluirBotao = new javax.swing.JButton();
+        editarBotao = new javax.swing.JButton();
+        cadastrarBotao = new javax.swing.JButton();
+        partidasBotao = new javax.swing.JButton();
 
-        labelTituloCadastroCorrentista.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        labelTituloCadastroCorrentista.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         labelTituloCadastroCorrentista.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTituloCadastroCorrentista.setText("Correntistas Cadastrados");
+        labelTituloCadastroCorrentista.setText("Jogadores Cadastrados");
 
         jScrollPane1.setViewportView(tableUsers);
+
+        excluirBotao.setText("Excluir");
+        excluirBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirBotaoActionPerformed(evt);
+            }
+        });
+
+        editarBotao.setText("Editar");
+        editarBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarBotaoActionPerformed(evt);
+            }
+        });
+
+        cadastrarBotao.setText("Cadastrar");
+
+        partidasBotao.setText("Partidas");
+        partidasBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partidasBotaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -44,7 +101,15 @@ public class PainelVisualizarUsuarios extends JFrameUtilsAdapter {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTituloCadastroCorrentista, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(excluirBotao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editarBotao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(partidasBotao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cadastrarBotao)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -53,15 +118,37 @@ public class PainelVisualizarUsuarios extends JFrameUtilsAdapter {
                 .addContainerGap()
                 .addComponent(labelTituloCadastroCorrentista)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(excluirBotao)
+                    .addComponent(editarBotao)
+                    .addComponent(cadastrarBotao)
+                    .addComponent(partidasBotao))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void excluirBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirBotaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_excluirBotaoActionPerformed
+
+    private void editarBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarBotaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarBotaoActionPerformed
+
+    private void partidasBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partidasBotaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_partidasBotaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cadastrarBotao;
+    private javax.swing.JButton editarBotao;
+    private javax.swing.JButton excluirBotao;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelTituloCadastroCorrentista;
+    private javax.swing.JButton partidasBotao;
     private javax.swing.JTable tableUsers;
     // End of variables declaration//GEN-END:variables
 }

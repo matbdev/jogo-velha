@@ -1,8 +1,6 @@
 package br.univates.jogovelha.model;
 
 import java.util.Date;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Classe que representa uma partida do jogo, com dois jogadores, resultado e data
@@ -20,12 +18,6 @@ public class Partida implements Comparable<Partida> {
     private final Date d;
 
     // Constructor overload
-    public Partida(Jogador jogadorX, Jogador jogadorO, Date data){
-        this.jogadorX = jogadorX;
-        this.jogadorO = jogadorO;
-        this.d = data;
-    }
-
     public Partida(Jogador jogadorX, Jogador jogadorO, Date data, char resultado){
         this.jogadorX = jogadorX;
         this.jogadorO = jogadorO;
@@ -48,40 +40,6 @@ public class Partida implements Comparable<Partida> {
 
     public char getResultado() {
         return resultado;
-    }
-
-    /**
-     * Setter para resultado
-     * Só é setado se não houver um resultado (evita manipulação)
-     * @param resultado - resultado da partida 
-     */
-    public void setResultado(char resultado) {
-        List<Character> resultados = Arrays.asList(EMPATE, VITORIA_O, VITORIA_X);
-        
-        if (!resultados.contains(resultado)) {
-            throw new IllegalArgumentException("""
-                    Informe uma opção válida.
-                    As opções disponíveis são:
-
-                    - Jogador.VITORIA_X = 'X';
-                    - Jogador.VITORIA_O = 'O';
-                    - Jogador.EMPATE = 'E'.
-                """);
-        }
-
-        if (this.resultado != 0){
-            String text = "";
-
-            switch (resultado) {
-                case EMPATE -> {text = "empate";}
-                case VITORIA_O -> {text = "vitória do jogador O";}
-                case VITORIA_X -> {text = "vitória do jogador X";}
-            }
-
-            throw new IllegalAccessError("Impossível modificar resultado -> a partida terminou em " + text);
-        }
-
-        this.resultado = resultado;
     }
 
     /**

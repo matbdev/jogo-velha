@@ -49,4 +49,19 @@ public class Jogador extends Pessoa {
     public int getQtdeEmpates() {
         return qtdeEmpates;
     }
+
+    // Setters
+    public void adicionarVitoria() {
+        this.qtdeVitorias++;
+    }
+
+    public void adicionarEmpate() {
+        this.qtdeEmpates++;
+    }
+
+    public void adicionarDerrota() {
+        this.qtdeDerrotas++;
+    }
+    
+    
 }
